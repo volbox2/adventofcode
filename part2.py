@@ -11,23 +11,21 @@ def crt(input_file: str,width=40):
             else:
                 line.append(".")
             # Position in the row starts at 0 and is incremented at the end of the cycle
-            row_pos += 1
+            row_pos = (row_pos+1) %40
             # Check if a new line and a reset of the position are needed
-            if row_pos % width == 0:
+            if row_pos == 0:
                 screen.append(line)
                 line = []
-                row_pos = 0
             if inst.startswith("addx"):
                 if x-1 <= row_pos <= x+1:
                     line.append("#")
                 else:
                     line.append(".")
-                row_pos +=1
+                row_pos = (row_pos+1) %40
                 x += int(inst.split()[1])
-                if row_pos % width == 0:
+                if row_pos == 0:
                     screen.append(line)
                     line = []
-                    row_pos = 0
         print("PART 2")
         print('\n'.join([' '.join([str(cell) for cell in row]) for row in screen]))
         

@@ -5,7 +5,6 @@ def check_cycle(first_check,check_interval,cycle):
 def signal_strength(input: str ,first_check: int,check_interval: int) -> None:
     x = 1
     cycle = 0
-    check = first_check
     signal_strength  = 0
     with open(input) as prog:
         program = prog.readlines()
